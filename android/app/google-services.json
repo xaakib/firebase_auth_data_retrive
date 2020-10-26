@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "643587998726",
+    "firebase_url": "https://fir-auth-data-retrive.firebaseio.com",
+    "project_id": "fir-auth-data-retrive",
+    "storage_bucket": "fir-auth-data-retrive.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643587998726:android:c4f7260f2ef4d0fdf02f87",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth_data_retrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643587998726-g50c7g13fldui3v2rt30bcou01e4i727.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeT36vpaipLzwxDeEibsa_g2FYq-LqhAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643587998726-g50c7g13fldui3v2rt30bcou01e4i727.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
