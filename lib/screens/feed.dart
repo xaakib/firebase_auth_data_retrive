@@ -1,6 +1,7 @@
 import 'package:firebase_auth_data_retrive/api/food_api.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
+import 'package:firebase_auth_data_retrive/screens/details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -55,6 +56,13 @@ class _FeedState extends State<Feed> {
                 fit: BoxFit.cover,
               ),
               subtitle: Text(foodNotifier.foodList[index].category.toString()),
+              onTap: () {
+                foodNotifier.currentFood = foodNotifier.foodList[index];
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (BuildContext context) {
+                  return DetailsScreen();
+                }));
+              },
             ),
           );
         },
