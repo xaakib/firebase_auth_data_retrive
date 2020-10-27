@@ -44,9 +44,18 @@ class _FeedState extends State<Feed> {
       ),
       body: ListView.separated(
         itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            title: Text(foodNotifier.foodList[index].name),
-            subtitle: Text(foodNotifier.foodList[index].category),
+          return Card(
+            elevation: 5,
+            child: ListTile(
+              title: Text(foodNotifier.foodList[index].name.toString()),
+              leading: Image.network(
+                foodNotifier.foodList[index].imageUrl.toString(),
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              subtitle: Text(foodNotifier.foodList[index].category.toString()),
+            ),
           );
         },
         itemCount: foodNotifier.foodList.length,

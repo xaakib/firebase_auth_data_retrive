@@ -2,7 +2,6 @@ import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'screens/feed.dart';
 import 'screens/login.dart';
 
@@ -11,12 +10,12 @@ void main() {
     MultiProvider(
       providers: [
         // ignore: missing_required_param
-        ChangeNotifierProvider(
-          builder: (context) => AuthNotifier(),
+        ChangeNotifierProvider<AuthNotifier>(
+          create: (context) => AuthNotifier(),
         ),
         // ignore: missing_required_param
-        ChangeNotifierProvider(
-          builder: (context) => FoodNotifier(),
+        ChangeNotifierProvider<FoodNotifier>(
+          create: (context) => FoodNotifier(),
         ),
       ],
       child: MyApp(),
