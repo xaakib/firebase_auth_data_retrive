@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_data_retrive/model/food.dart';
 import 'package:firebase_auth_data_retrive/model/user.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
+import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
 
 login(User user, AuthNotifier authNotifier) async {
   AuthResult authResult = await FirebaseAuth.instance
@@ -15,6 +18,7 @@ login(User user, AuthNotifier authNotifier) async {
     }
   }
 }
+
 singup(User user, AuthNotifier authNotifier) async {
   AuthResult authResult = await FirebaseAuth.instance
       .createUserWithEmailAndPassword(
@@ -51,4 +55,15 @@ initializeCurrentUser(AuthNotifier authNotifier) async {
   if (firebaseUser != null) {
     authNotifier.setUser(firebaseUser);
   }
+}
+
+getFoods(FoodNotifier foodNotifier) async {
+  QuerySnapshot snapshot =
+      await Firestore.instance.collection("foods").getDocuments();
+  List<Food> _foodList = [];
+  snapshot.documents.forEach((document) {
+    Food food = Food.fromMap(document.data);
+    _foodList.add(food);
+  });
+  foodNotifier.foodList = _foodList;
 }

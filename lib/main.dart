@@ -1,4 +1,5 @@
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
+import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,10 @@ void main() {
         // ignore: missing_required_param
         ChangeNotifierProvider(
           builder: (context) => AuthNotifier(),
+        ),
+        // ignore: missing_required_param
+        ChangeNotifierProvider(
+          builder: (context) => FoodNotifier(),
         ),
       ],
       child: MyApp(),
