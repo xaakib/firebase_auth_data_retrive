@@ -1,9 +1,8 @@
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
+import 'package:firebase_auth_data_retrive/screens/movie_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'screens/feed.dart';
-import 'screens/login.dart';
 
 void main() {
   runApp(
@@ -33,11 +32,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Consumer<AuthNotifier>(
-        builder: (context, notifier, child) {
-          return notifier.user != null ? Feed() : Login();
-        },
-      ),
+      home: MovieScreen(),
+
+      // Consumer<AuthNotifier>(
+      //   builder: (context, notifier, child) {
+      //     return notifier.user != null ? Feed() : Login();
+      //   },
+      // ),
     );
   }
 }
