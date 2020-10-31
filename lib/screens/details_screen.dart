@@ -18,6 +18,9 @@ class DetailsScreen extends StatelessWidget {
             children: [
               Image.network(
                 foodNotifier.currentFood.imageUrl,
+                height: 300,
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width,
               ),
               SizedBox(
                 height: 32,

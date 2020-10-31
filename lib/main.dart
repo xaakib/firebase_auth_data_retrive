@@ -1,6 +1,8 @@
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
-import 'package:firebase_auth_data_retrive/screens/movie_screen.dart';
+import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
+import 'package:firebase_auth_data_retrive/screens/feed.dart';
+import 'package:firebase_auth_data_retrive/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +17,9 @@ void main() {
         // ignore: missing_required_param
         ChangeNotifierProvider<FoodNotifier>(
           create: (context) => FoodNotifier(),
+        ),
+        ChangeNotifierProvider<OrangeNotifier>(
+          create: (context) => OrangeNotifier(),
         ),
       ],
       child: MyApp(),
@@ -32,13 +37,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MovieScreen(),
-
-      // Consumer<AuthNotifier>(
-      //   builder: (context, notifier, child) {
-      //     return notifier.user != null ? Feed() : Login();
-      //   },
-      // ),
+      home: Consumer<AuthNotifier>(
+        builder: (context, notifier, child) {
+          return notifier.user != null ? Feed() : Login();
+        },
+      ),
     );
   }
 }

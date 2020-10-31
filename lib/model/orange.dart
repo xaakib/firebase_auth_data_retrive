@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Food {
+class Orange {
   String id;
   String name;
   String category;
   String imageUrl;
   List subIngredients;
   Timestamp createdAt;
-  Food(
+  Orange(
       {this.id,
       this.name,
       this.category,
       this.imageUrl,
       this.subIngredients,
       this.createdAt});
-  Food.fromMap(Map<String, dynamic> data) {
+  Orange.fromMap(Map<String, dynamic> data) {
     id = data['id'];
     name = data['name'];
     category = data['category'];

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth_data_retrive/model/food.dart';
+import 'package:firebase_auth_data_retrive/model/orange.dart';
 import 'package:firebase_auth_data_retrive/model/user.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
+import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
 
 login(User user, AuthNotifier authNotifier) async {
   AuthResult authResult = await FirebaseAuth.instance
@@ -66,4 +68,16 @@ getFoods(FoodNotifier foodNotifier) async {
     _foodList.add(food);
   });
   foodNotifier.foodList = _foodList;
+}
+
+//for orange collections
+getOranges(OrangeNotifier orangeNotifier) async {
+  QuerySnapshot snapshot =
+      await Firestore.instance.collection("orange").getDocuments();
+  List<Orange> _orangeList = [];
+  snapshot.documents.forEach((document) {
+    Orange orange = Orange.fromMap(document.data);
+    _orangeList.add(orange);
+  });
+  orangeNotifier.orangeList = _orangeList;
 }
