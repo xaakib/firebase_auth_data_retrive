@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../notifier/provider_notifier.dart';
 
-class DetailsScreen extends StatefulWidget {
+class FoodDetails extends StatefulWidget {
   @override
-  _DetailsScreenState createState() => _DetailsScreenState();
+  _FoodDetailsState createState() => _FoodDetailsState();
 }
 
-class _DetailsScreenState extends State<DetailsScreen> {
+class _FoodDetailsState extends State<FoodDetails> {
   final double expanded_height = 400;
   final double rounded_container_height = 50;
   //  foodNotifier.currentFood.imageUrl,
@@ -20,123 +20,122 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
     return Scaffold(
         body: SafeArea(
-                  child: CustomScrollView(
-      slivers: [
-      buildSliverPersistentHeader(foodNotifier),
+      child: CustomScrollView(
+        slivers: [
+          buildSliverPersistentHeader(foodNotifier),
           SliverToBoxAdapter(
-            child: 
-            
-            buildMovieDetailsSecound(foodNotifier, context),
+            child: buildMovieDetailsSecound(foodNotifier, context),
           )
-      ],
-    ),
-        ));
+        ],
+      ),
+    ));
   }
 
   Widget buildSliverPersistentHeader(FoodNotifier foodNotifier) {
     return SliverPersistentHeader(
-    delegate: DetailsSliverDelegate(
-      expanded_height,
-      rounded_container_height,
-      foodNotifier,
-    ),
-  );
+      delegate: DetailsSliverDelegate(
+        expanded_height,
+        rounded_container_height,
+        foodNotifier,
+      ),
+    );
   }
 
-  Container buildMovieDetailsSecound(FoodNotifier foodNotifier, BuildContext context) {
+  Container buildMovieDetailsSecound(
+      FoodNotifier foodNotifier, BuildContext context) {
     return Container(
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          buildMovieDetailsfirst(foodNotifier),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 15),
-            child: Text(
-              //Descriptions Text for movie
-               foodNotifier.currentFood.name,
-              style: TextStyle(
-                color: Colors.black45,
-                height: 1.4,
-                fontSize: 14,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildMovieDetailsfirst(foodNotifier),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 15),
+              child: Text(
+                //Descriptions Text for movie
+                foodNotifier.currentFood.name,
+                style: TextStyle(
+                  color: Colors.black45,
+                  height: 1.4,
+                  fontSize: 14,
+                ),
               ),
             ),
-          ),
-          Text(
-            "Screenshorts",
-            style: TextStyle(
-              color: Colors.black87,
-              height: 1.4,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+            Text(
+              "Screenshorts",
+              style: TextStyle(
+                color: Colors.black87,
+                height: 1.4,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-          height: 164,
-          width: MediaQuery.of(context).size.width,
-          child: GridView.count(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            crossAxisCount: 1,
-            crossAxisSpacing: 4,
-            mainAxisSpacing: 10,
-            children: foodNotifier.currentFood.subIngredients
-                .map(
-                  (ingredient) => Card(
-                    child: Image.network(
-                      ingredient,fit: BoxFit.fill,height: 150,
-                      width: 250,
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              height: 164,
+              width: MediaQuery.of(context).size.width,
+              child: GridView.count(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                crossAxisCount: 1,
+                crossAxisSpacing: 4,
+                mainAxisSpacing: 10,
+                children: foodNotifier.currentFood.subIngredients
+                    .map(
+                      (ingredient) => Card(
+                        child: Image.network(
+                          ingredient,
+                          fit: BoxFit.fill,
+                          height: 150,
+                          width: 250,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Requarment",
+                  style: TextStyle(
+                    color: Colors.black87,
+                    height: 1.4,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "View all",
+                    style: TextStyle(
+                      color: Colors.red,
+                      height: 1.4,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 16,
                     ),
                   ),
-                )
-                .toList(),
-          ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+
+            //This the Requerment Class
+            // Requerment(),
+          ],
         ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Requarment",
-                style: TextStyle(
-                  color: Colors.black87,
-                  height: 1.4,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  "View all",
-                  style: TextStyle(
-                    color: Colors.red,
-                    height: 1.4,
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-
-
-
-          //This the Requerment Class
-          // Requerment(),
-        ],
       ),
-    ),
-  );
+    );
   }
 
   Widget buildMovieDetailsfirst(FoodNotifier foodNotifier) {
@@ -194,6 +193,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 }
+
 //First Intro Image Header Class
 class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
   final double expandedheight;
@@ -239,7 +239,7 @@ class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-              foodNotifier.currentFood.category,
+                foodNotifier.currentFood.category,
                 style: TextStyle(
                   color: Colors.white,
                   backgroundColor: Colors.black26,
@@ -248,7 +248,7 @@ class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
                 ),
               ),
               Text(
-            foodNotifier.currentFood.category,
+                foodNotifier.currentFood.category,
                 style: TextStyle(
                   color: Colors.white,
                   backgroundColor: Colors.black26,
@@ -274,13 +274,3 @@ class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
     return true;
   }
 }
-
-
-
-
-
-
-
-
-
-

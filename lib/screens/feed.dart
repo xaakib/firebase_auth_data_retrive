@@ -1,10 +1,9 @@
 import 'package:firebase_auth_data_retrive/api/food_api.dart';
+import 'package:firebase_auth_data_retrive/details_screens/food_details.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'details_screen.dart';
 
 class Feed extends StatefulWidget {
   @override
@@ -83,15 +82,14 @@ class _FeedState extends State<Feed> {
           SliverToBoxAdapter(
             child: orangeContainerRow(orangeNotifier),
           ),
-          
         ],
       ),
     );
   }
 
-
   Widget opulerContainerRow(
-      FoodNotifier foodNotifier, ) {
+    FoodNotifier foodNotifier,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -106,16 +104,17 @@ class _FeedState extends State<Feed> {
           ),
         ),
         Container(
-          height: 250,
+          height: 238,
           child: ListView.builder(
-               itemCount: foodNotifier.foodList.length,
+            itemCount: foodNotifier.foodList.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
                   foodNotifier.currentFood = foodNotifier.foodList[index];
-                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext){
-                    return DetailsScreen();
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext) {
+                    return FoodDetails();
                   }));
                 },
                 child: Padding(
@@ -128,7 +127,8 @@ class _FeedState extends State<Feed> {
                           height: 180,
                           width: 135,
                           child: Image.network(
-                            foodNotifier.foodList[index].imageUrl.toString(),fit: BoxFit.cover,
+                            foodNotifier.foodList[index].imageUrl.toString(),
+                            fit: BoxFit.cover,
                           ),
                         ),
                         Padding(
@@ -137,8 +137,7 @@ class _FeedState extends State<Feed> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                foodNotifier.foodList[index].name
-                                    .toString(),
+                                foodNotifier.foodList[index].name.toString(),
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,
@@ -158,93 +157,84 @@ class _FeedState extends State<Feed> {
                 ),
               );
             },
-         
           ),
         ),
       ],
     );
   }
-  
+
   Widget orangeContainerRow(OrangeNotifier orangeNotifier) {
     return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text(
-                        "Orange",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            "Orange",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          height: 238,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: orangeNotifier.orangeList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => DetailScreen(populer[index])));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 180,
+                          width: 135,
+                          child: Image.network(
+                            orangeNotifier.orangeList[index].imageUrl
+                                .toString(),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      height: 250,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: orangeNotifier.orangeList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         builder: (context) => DetailScreen(populer[index])));
-                            },
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              child: Card(
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 180,
-                                      width: 135,
-                                      child: Image.network(
-                                        orangeNotifier
-                                            .orangeList[index].imageUrl
-                                            .toString(),fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 1),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            orangeNotifier
-                                                .orangeList[index].name
-                                                .toString(),
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 2,
-                                          ),
-                                          Text((orangeNotifier
-                                              .orangeList[index].category
-                                              .toString())),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 1),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                orangeNotifier.orangeList[index].name
+                                    .toString(),
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
+                              SizedBox(
+                                height: 2,
+                              ),
+                              Text((orangeNotifier.orangeList[index].category
+                                  .toString())),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                );
-              
-         
-          
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
