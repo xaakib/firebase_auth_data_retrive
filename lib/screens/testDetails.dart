@@ -1,6 +1,7 @@
-import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../notifier/provider_notifier.dart';
 
 class TestDetails extends StatelessWidget {
   @override

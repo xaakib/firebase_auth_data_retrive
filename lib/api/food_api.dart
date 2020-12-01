@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_auth_data_retrive/model/food.dart';
-import 'package:firebase_auth_data_retrive/model/orange.dart';
+import 'package:firebase_auth_data_retrive/model/movie_models.dart';
 import 'package:firebase_auth_data_retrive/model/user.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
-import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
-import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
+import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
 
 login(User user, AuthNotifier authNotifier) async {
   AuthResult authResult = await FirebaseAuth.instance

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../notifier/food_notifier.dart';
-import '../notifier/food_notifier.dart';
+import '../notifier/provider_notifier.dart';
 
 class DetailsScreen extends StatefulWidget {
   @override
@@ -20,16 +19,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
         Provider.of<FoodNotifier>(context, listen: false);
 
     return Scaffold(
-        body: CustomScrollView(
+        body: SafeArea(
+                  child: CustomScrollView(
       slivers: [
       buildSliverPersistentHeader(foodNotifier),
-        SliverToBoxAdapter(
-          child: 
-          
-          buildMovieDetailsSecound(foodNotifier, context),
-        )
+          SliverToBoxAdapter(
+            child: 
+            
+            buildMovieDetailsSecound(foodNotifier, context),
+          )
       ],
-    ));
+    ),
+        ));
   }
 
   Widget buildSliverPersistentHeader(FoodNotifier foodNotifier) {
@@ -193,19 +194,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//First Intro Image
+//First Intro Image Header Class
 class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
   final double expandedheight;
   final double rounded_container_height;
@@ -295,58 +284,3 @@ class DetailsSliverDelegate extends SliverPersistentHeaderDelegate {
 
 
 
-
-
-
-// Scaffold(
-//       appBar: AppBar(
-//         title: Text(foodNotifier.currentFood.name),
-//       ),
-//       body: Column(
-//         children: [
-//           Image.network(
-//             foodNotifier.currentFood.imageUrl,
-//             height: 300,
-//             fit: BoxFit.cover,
-//             width: MediaQuery.of(context).size.width,
-//           ),
-//           SizedBox(
-//             height: 32,
-//           ),
-//           Text(
-//             foodNotifier.currentFood.name,
-//             style: TextStyle(
-//               fontSize: 40,
-//             ),
-//           ),
-//           Text(
-//             foodNotifier.currentFood.category,
-//             style: TextStyle(
-//               fontSize: 18,
-//             ),
-//           ),
-          // Container(
-          //   height: 164,
-          //   width: MediaQuery.of(context).size.width,
-          //   child: GridView.count(
-          //     scrollDirection: Axis.horizontal,
-          //     shrinkWrap: true,
-          //     crossAxisCount: 1,
-          //     crossAxisSpacing: 4,
-          //     mainAxisSpacing: 10,
-          //     children: foodNotifier.currentFood.subIngredients
-          //         .map(
-          //           (ingredient) => Card(
-          //             child: Image.network(
-          //               ingredient,fit: BoxFit.fill,height: 150,
-          //               width: 250,
-          //             ),
-          //           ),
-          //         )
-          //         .toList(),
-          //   ),
-          // ),
-//         ],
-//       ),
-//     );
-//

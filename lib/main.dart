@@ -1,6 +1,5 @@
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
-import 'package:firebase_auth_data_retrive/notifier/food_notifier.dart';
-import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
+import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
 import 'package:firebase_auth_data_retrive/screens/feed.dart';
 import 'package:firebase_auth_data_retrive/screens/login.dart';
 import 'package:flutter/material.dart';
