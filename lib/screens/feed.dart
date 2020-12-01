@@ -5,6 +5,8 @@ import 'package:firebase_auth_data_retrive/notifier/orange_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'details_screen.dart';
+
 class Feed extends StatefulWidget {
   @override
   _FeedState createState() => _FeedState();
@@ -112,10 +114,10 @@ class _FeedState extends State<Feed> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => DetailScreen(populer[index])));
+                  foodNotifier.currentFood = foodNotifier.foodList[index];
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext){
+                    return DetailsScreen();
+                  }));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
