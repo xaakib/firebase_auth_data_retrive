@@ -82,11 +82,88 @@ class _FeedState extends State<Feed> {
           SliverToBoxAdapter(
             child: orangeContainerRow(orangeNotifier),
           ),
+          
         ],
       ),
     );
   }
 
+
+  Widget opulerContainerRow(
+      FoodNotifier foodNotifier, ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Text(
+            "Food",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Container(
+          height: 250,
+          child: ListView.builder(
+               itemCount: foodNotifier.foodList.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (context) => DetailScreen(populer[index])));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height: 180,
+                          width: 135,
+                          child: Image.network(
+                            foodNotifier.foodList[index].imageUrl.toString(),fit: BoxFit.cover,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 1),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                foodNotifier.foodList[index].name
+                                    .toString(),
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 2,
+                              ),
+                              Text((foodNotifier.foodList[index].category
+                                  .toString())),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+         
+          ),
+        ),
+      ],
+    );
+  }
+  
   Widget orangeContainerRow(OrangeNotifier orangeNotifier) {
     return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +180,6 @@ class _FeedState extends State<Feed> {
                     ),
                     Container(
                       height: 250,
-                      color: Colors.red,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: orangeNotifier.orangeList.length,
@@ -129,18 +205,18 @@ class _FeedState extends State<Feed> {
                                       child: Image.network(
                                         orangeNotifier
                                             .orangeList[index].imageUrl
-                                            .toString(),
+                                            .toString(),fit: BoxFit.cover,
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 5),
+                                      padding: const EdgeInsets.only(left: 1),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             orangeNotifier
-                                                .orangeList[index].category
+                                                .orangeList[index].name
                                                 .toString(),
                                             style: TextStyle(
                                               fontSize: 17,
@@ -151,7 +227,7 @@ class _FeedState extends State<Feed> {
                                             height: 2,
                                           ),
                                           Text((orangeNotifier
-                                              .orangeList[index].name
+                                              .orangeList[index].category
                                               .toString())),
                                         ],
                                       ),
@@ -169,81 +245,5 @@ class _FeedState extends State<Feed> {
               
          
           
-  }
-
-  Widget opulerContainerRow(
-      FoodNotifier foodNotifier, ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Text(
-            "Food",
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        Container(
-          height: 250,
-          color: Colors.red,
-          child: ListView.builder(
-               itemCount: foodNotifier.foodList.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => DetailScreen(populer[index])));
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Card(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 180,
-                          width: 135,
-                          child: Image.network(
-                            foodNotifier.foodList[index].imageUrl.toString(),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                foodNotifier.foodList[index].category
-                                    .toString(),
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text((foodNotifier.foodList[index].name
-                                  .toString())),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              );
-            },
-         
-          ),
-        ),
-      ],
-    );
   }
 }
