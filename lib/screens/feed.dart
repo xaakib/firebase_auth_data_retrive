@@ -113,7 +113,7 @@ class _FeedState extends State<Feed> {
                 onTap: () {
                   foodNotifier.currentFood = foodNotifier.foodList[index];
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext) {
+                      .push(MaterialPageRoute(builder: (_) {
                     return FoodDetails();
                   }));
                 },
@@ -127,7 +127,7 @@ class _FeedState extends State<Feed> {
                           height: 180,
                           width: 135,
                           child: Image.network(
-                            foodNotifier.foodList[index].imageUrl.toString(),
+                            foodNotifier.foodList[index].poster.toString(),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -137,7 +137,7 @@ class _FeedState extends State<Feed> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                foodNotifier.foodList[index].name.toString(),
+                                foodNotifier.foodList[index].title.toString(),
                                 style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold,

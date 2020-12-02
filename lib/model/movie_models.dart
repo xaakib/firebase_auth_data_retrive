@@ -1,26 +1,27 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Food {
-  String id;
-  String name;
+  String title;
   String category;
-  String imageUrl;
+  String poster;
+  String download;
+  String introduction;
   List subIngredients;
-  Timestamp createdAt;
-  Food(
-      {this.id,
-      this.name,
-      this.category,
-      this.imageUrl,
-      this.subIngredients,
-      this.createdAt});
+  Food({
+    this.title,
+    this.category,
+    this.poster,
+    this.download,
+    this.introduction,
+    this.subIngredients,
+  });
   Food.fromMap(Map<String, dynamic> data) {
-    id = data['id'];
-    name = data['name'];
+    title = data['title'];
+    download = data['download'];
     category = data['category'];
-    imageUrl = data['imageUrl'];
+    poster = data['poster'];
     subIngredients = data['subIngredients'];
-    createdAt = data['createdAt'];
+    introduction = data['introduction'];
   }
 }
 
@@ -47,4 +48,3 @@ class Orange {
     createdAt = data['createdAt'];
   }
 }
-
