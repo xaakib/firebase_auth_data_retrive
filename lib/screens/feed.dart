@@ -2,6 +2,7 @@ import 'package:firebase_auth_data_retrive/api/food_api.dart';
 import 'package:firebase_auth_data_retrive/details_screens/food_details.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
+import 'package:firebase_auth_data_retrive/screens/testDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -185,11 +186,12 @@ class _FeedState extends State<Feed> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => DetailScreen(populer[index])));
-                },
+                   orangeNotifier.currentOrange = orangeNotifier.orangeList[index];
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) {
+                    return TestDetails();
+                  }));
+                     },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Card(
