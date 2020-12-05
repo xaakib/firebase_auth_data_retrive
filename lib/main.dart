@@ -1,3 +1,4 @@
+import 'package:firebase_auth_data_retrive/crude_testting/crud.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
 import 'package:firebase_auth_data_retrive/screens/feed.dart';
@@ -25,6 +26,7 @@ void main() {
     ),
   );
 }
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -40,11 +42,13 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Consumer<AuthNotifier>(
-        builder: (context, notifier, child) {
-          return notifier.user != null ? Feed() : Login();
-        },
-      ),
+      // home: Consumer<AuthNotifier>(
+      //   builder: (context, notifier, child) {
+      //     return notifier.user != null ? Feed() : Login();
+      //   },
+      // ),
+
+      home: TexEditField(),
     );
   }
 }
