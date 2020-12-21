@@ -42,13 +42,13 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: Consumer<AuthNotifier>(
-      //   builder: (context, notifier, child) {
-      //     return notifier.user != null ? Feed() : Login();
-      //   },
-      // ),
+      home: Consumer<AuthNotifier>(
+        builder: (context, notifier, child) {
+          return notifier.user != null ? Feed() : Login();
+        },
+      ),
 
-      home: TexEditField(),
+      // home: TexEditField(),
     );
   }
 }

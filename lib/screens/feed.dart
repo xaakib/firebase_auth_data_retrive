@@ -1,4 +1,6 @@
 import 'package:firebase_auth_data_retrive/api/food_api.dart';
+import 'package:firebase_auth_data_retrive/crude_testting/crud.dart';
+import 'package:firebase_auth_data_retrive/crude_testting/upload_data.dart';
 import 'package:firebase_auth_data_retrive/details_screens/food_details.dart';
 import 'package:firebase_auth_data_retrive/notifier/auth_notifier.dart';
 import 'package:firebase_auth_data_retrive/notifier/provider_notifier.dart';
@@ -54,7 +56,10 @@ class _FeedState extends State<Feed> {
                     size: 28,
                     color: Colors.white,
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UploadData()));
+                  }),
             ],
             floating: true,
             leading: IconButton(
@@ -113,8 +118,7 @@ class _FeedState extends State<Feed> {
               return GestureDetector(
                 onTap: () {
                   foodNotifier.currentFood = foodNotifier.foodList[index];
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                     return FoodDetails();
                   }));
                 },
@@ -186,12 +190,12 @@ class _FeedState extends State<Feed> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                   orangeNotifier.currentOrange = orangeNotifier.orangeList[index];
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) {
+                  orangeNotifier.currentOrange =
+                      orangeNotifier.orangeList[index];
+                  Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                     return TestDetails();
                   }));
-                     },
+                },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Card(
